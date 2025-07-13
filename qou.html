@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Legacy Quote Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .quote-container {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0,0,0,0.2);
+      backdrop-filter: blur(8px);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 26px;
+    }
+
+    #quote {
+      font-size: 20px;
+      font-style: italic;
+      min-height: 80px;
+      margin-bottom: 20px;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+    }
+
+    #quote.show {
+      opacity: 1;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #generateBtn {
+      background-color: #007bff;
+      color: white;
+    }
+
+    #generateBtn:hover {
+      background-color: #0056b3;
+    }
+
+    #copyBtn {
+      background-color: #28a745;
+      color: white;
+    }
+
+    #copyBtn:hover {
+      background-color: #1e7e34;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quote-container">
+    <h2>✨ Daily Legacy Drop</h2>
+    <p id="quote">Click below to receive today’s wisdom 👇</p>
+    <button id="generateBtn">Get Quote</button>
+    <button id="copyBtn" onclick="copyQuote()">Copy</button>
+  </div>
+
+  <script>
+    const quotes = [
+      "You're not behind — you're being built.",
+      "Discipline and accountability creates freedom.",
+      "Let the storm sharpen your sword.",
+      "A king never reacts — he responds.",
+      "Real growth happens in silence.",
+      "Consistency is louder than motivation.",
+      "The world bows to those who master themselves.",
+      "You don't chase purpose. You align with it.",
+      "Your past is a lesson, not a sentence.",
+      "You don’t need more time — just more direction.",
+      "Manhood begins where excuses end.",
+      "Being a man isn’t about dominance. It’s about responsibility.",
+      "A man doesn't prove himself by reacting — he proves himself by remaining.",
+      "You can't conquer the world if you haven't conquered your own urges.",
+      "True masculinity is quiet strength backed by unshakable values.",
+      "Provision isn’t just money — it’s presence, protection, and perspective.",
+      "A boy wants to be seen. A man builds in silence.",
+      "Masculinity isn’t toxic — immaturity is.",
+      "Real men create structure. Weak men create chaos.",
+      "Emotions don’t make you weak. Lack of control does.",
+      "A woman’s strength isn’t in her voice — it’s in her virtue.",
+      "Beauty fades. Honor builds legacies.",
+      "The world teaches women to be seen. Wisdom teaches them to be secure.",
+      "Femininity isn’t submission — it’s sacred design.",
+      "A real woman doesn’t chase status. She carries substance.",
+      "The right woman multiplies everything a man brings into her life.",
+      "Elegance isn’t expensive — it’s how you carry your soul.",
+      "A wise woman builds. A loud woman destroys.",
+      "Femininity is not weakness — it's a superpower the world is afraid of.",
+      "Every queen knows when to speak, and when to let silence be her crown."
+    ];
+
+    const emojis = ["💭", "🔑", "🧠", "👑", "🔥", "🌟", "🛡️", "📜", "💡", "✨"];
+
+    const btn = document.getElementById("generateBtn");
+    const quote = document.getElementById("quote");
+
+    btn.addEventListener("click", () => {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+      quote.classList.remove("show");
+
+      setTimeout(() => {
+        quote.innerText = `${emoji} ${quotes[randomIndex]}`;
+        quote.classList.add("show");
+      }, 100);
+    });
+
+    function copyQuote() {
+      navigator.clipboard.writeText(quote.innerText);
+      alert("✅ Quote copied to clipboard!");
+    }
+  </script>
+
+</body>
+</html>
